@@ -30,9 +30,13 @@ export class SingupComponent implements OnInit {
 
     if(this.singupForm.value.password === this.singupForm.value.passwordConfirmed && this.singupForm.valid){
       const {name, email, password}=this.singupForm.value;
-      const res = await this.authService.singup(name, email, password);
-      console.log(res);
-      this.router.navigate(['/home']);
+      try {
+        await this.authService.singup(name, email, password);
+        this.router.navigate(['/login']);
+      } catch (error) {
+        console.log(error);
+      }
+      
     }
     
   }

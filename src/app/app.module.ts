@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { SingupComponent } from './pages/singup/singup.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SingupComponent } from './pages/singup/singup.component';
     HomeComponent,
     LoginComponent,
     ErrorComponent,
-    SingupComponent
+    SingupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

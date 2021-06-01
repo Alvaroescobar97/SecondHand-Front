@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Clothe } from 'src/app/models/clothe';
+import { ClotheService } from 'src/app/services/clothe.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  clothes: Array<Clothe>;
 
-  ngOnInit(): void {
+  constructor(private clotheService: ClotheService) { 
+    this.clothes = new Array();
   }
 
+  ngOnInit(): void {
+    this.getAllClothes();
+  }
+
+  async getAllClothes(){
+    const res = await this.clotheService.getAllClothes();
+    this.clothes = res.clothes;
+    console.log(this.clothes);
+  }
 }

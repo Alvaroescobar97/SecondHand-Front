@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Global} from './global';
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,13 @@ export class AuthService {
     this.url = Global.url;
   }
 
-  login(): Promise<any>{
-    return this.httpClient.get<any>(this.url+'signIn').toPromise();
+  login(email: string, password: string): Promise<any>{
+    const body = { email, password};
+    return this.httpClient.post<any>(this.url+'signIn',body).toPromise();
   }
 
   singup(name: string, email: string, password: string): Promise<any>{
     const body = {name, email, password};
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.post<any>(this.url+'signUp', body, {headers}).toPromise();
+    return this.httpClient.post<any>(this.url+'signUp', body).toPromise();
   }
-
 }
