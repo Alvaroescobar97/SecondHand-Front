@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 class="m-5 text-center">Clothes for Sale</h1>
+
+    <a class="btn btn-dark mb-3" [routerLink]="['/clothesOnSale/new']">Add Clothe</a>
+
+    <div class="d-flex flex-sm-column flex-md-row justify-content-around flex-wrap">
+
+        <app-clothe *ngFor="let clothe of clothes" [clothe]="clothe" (click)="onClick(clothe)"></app-clothe>
+
+    </div>
+
+
+</div>

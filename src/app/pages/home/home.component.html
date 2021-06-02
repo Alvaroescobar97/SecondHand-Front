@@ -3,21 +3,8 @@
 
     <div class="d-flex flex-sm-column flex-md-row justify-content-around flex-wrap">
 
-
-            <div class="card mb-5" *ngFor="let clothe of clothes">
-
-                <img src="../../../assets/imgs/20200609-adidas-11.jpg" alt="Image" height="250">
-
-                <div class="card-body row">
-                    <h5 class="card-title col-8">{{clothe.reference}}</h5>
-                    
-                    <p class="card-text col-4"><span style="color: #FFB703;">{{+clothe.price.$numberDecimal}}</span></p>
-                </div>
-            </div>
-
-
+            <app-clothe *ngFor="let clothe of clothes" [clothe]="clothe"></app-clothe>
         
-
     </div>
 
 
