@@ -2,19 +2,21 @@
     <h1 class="m-5 text-center">Create Clothe</h1>
 
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="card p-5">
-         
+
         <div class="row">
             <div class="mb-3 col-12 col-md-6">
                 <label class="form-label">Reference</label>
                 <input class="form-control" formControlName="reference">
-                <div class="error" *ngIf="createForm.controls.reference.errors?.required && createForm.controls.reference.touched">
+                <div class="error"
+                    *ngIf="createForm.controls.reference.errors?.required && createForm.controls.reference.touched">
                     Reference is required
                 </div>
             </div>
             <div class="mb-3 col-12 col-md-6">
                 <label class="form-label">Size</label>
                 <input class="form-control" formControlName="size">
-                <div class="error" *ngIf="createForm.controls.size.errors?.required && createForm.controls.size.touched">
+                <div class="error"
+                    *ngIf="createForm.controls.size.errors?.required && createForm.controls.size.touched">
                     Size is required
                 </div>
             </div>
@@ -30,6 +32,12 @@
             <label class="form-label">Description</label>
             <textarea class="form-control" formControlName="description"></textarea>
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fotos</label>
+            <input type="file"  class="form-control" name="files[]" multiple="multiple" (change)="selectFiles($event)">
+        </div>
+
 
         <input type="submit" value="Save" class="btn btn-success">
     </form>

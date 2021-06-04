@@ -28,6 +28,7 @@ export class SalesComponent implements OnInit {
 
   onClick(clothe: Clothe){
     console.log(clothe);
+    //Cambiar esto aqui debe estar el detalle de la ropa
     this.router.navigate([`/clothesOnSale/edit/${clothe._id}`]);
   }
 }
