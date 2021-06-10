@@ -15,12 +15,10 @@ export class HeaderComponent implements OnInit,DoCheck   {
 
   ngOnInit(): void {
     this.token = localStorage.getItem("token") || '';
-    console.log(this.token)
   }
   
   ngDoCheck(){
     this.token = localStorage.getItem("token") || '';
-    console.log(this.token)
   }
 
   onClick(){

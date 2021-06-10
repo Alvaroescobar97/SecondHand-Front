@@ -3,9 +3,9 @@
 
     <a class="btn btn-dark mb-3" [routerLink]="['/clothesOnSale/new']">Add Clothe</a>
 
-    <div class="d-flex flex-sm-column flex-md-row justify-content-around flex-wrap">
+    <div class="d-flex flex-sm-column flex-md-row justify-content-around flex-wrap align-items-center">  
 
-        <app-clothe *ngFor="let clothe of clothes" [clothe]="clothe" (click)="onClick(clothe)"></app-clothe>
+        <app-clothe *ngFor="let clothe of clothes" [clothe]="clothe" (click)="onClick(clothe)" [owner]="true" (deleted)="reload()"></app-clothe>
 
     </div>
 

@@ -12,7 +12,7 @@
                     Reference is required
                 </div>
             </div>
-            <div class="mb-3 col-12 col-md-6">
+            <div class="mb-3 col-6 col-md-3">
                 <label class="form-label">Size</label>
                 <input class="form-control" formControlName="size">
                 <div class="error"
@@ -20,14 +20,31 @@
                     Size is required
                 </div>
             </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Price</label>
-            <input class="form-control" formControlName="price">
-            <div class="error" *ngIf="createForm.controls.price.errors?.required && createForm.controls.price.touched">
-                Price is required
+            <div class="mb-3 col-6 col-md-3">
+                <label class="form-label">Price (Ej: 15.500)</label>
+                <input type="number" class="form-control" formControlName="price">
+                <div class="error"
+                    *ngIf="createForm.controls.price.errors?.required && createForm.controls.price.touched">
+                    Price is required
+                </div>
             </div>
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">Color</label>
+            <input class="form-control mb-3" [(colorPicker)]="color" [style.background]="color" />
+
+            <div class="d-flex align-items-center">
+                <a class="btn btn-dark" (click)="addColor()"><i class="fas fa-plus-circle"></i></a>
+
+                <div  class="rounded-circle ms-3" style="width: 30px; height: 30px;" *ngFor="let item of selectedColors; let i=index"
+                    [ngStyle]="{'background-color': item}">
+                    <span (click)="deleteColor(i)" class="badge rounded-circle bg-secondary" style="position: relative; top: -15px; left: 15px;"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+
+
         <div class="mb-3">
             <label class="form-label">Description</label>
             <textarea class="form-control" formControlName="description"></textarea>
@@ -35,7 +52,13 @@
 
         <div class="mb-3">
             <label class="form-label">Fotos</label>
-            <input type="file"  class="form-control" name="files[]" multiple="multiple" (change)="selectFiles($event)">
+
+            <input type="file" class="form-control mb-3" name="files[]" multiple="multiple"
+                (change)="selectFiles($event)" accept="image/*">
+            <div class="d-flex flex-row flex-wrap">
+                <img [src]="item" *ngFor="let item of urls" class="rounded mx-auto d-block"
+                    style="max-width: 250px; max-height: 200px;" alt="image">
+            </div>
         </div>
 
 

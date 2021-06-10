@@ -23,10 +23,21 @@ export class ClotheService {
     return this.httpClient.get<any>(this.url+'clothes/onSale',{headers}).toPromise();
   }
 
-  createClothe(reference: string, size: string, price: number, description : string): Promise<any>{
+  createClothe(reference: string, size: string, price: number, description : string, color: Array<string>): Promise<any>{
     let headers = new HttpHeaders().set('x-access-token', localStorage.getItem("token")||'');
-    let body = {reference,size,price,description};
+    let body = {reference,size,price,description,color};
     return this.httpClient.post<any>(this.url+'clothes/create', body, {headers}).toPromise();
+  }
+
+  updateClothe(id:any, reference: string, size: string, price: number, description : string, color: Array<string>): Promise<any>{
+    let headers = new HttpHeaders().set('x-access-token', localStorage.getItem("token")||'');
+    let body = {reference,size,price,description,color};
+    return this.httpClient.put<any>(this.url+'clothes/'+id, body, {headers}).toPromise();
+  }
+
+  deleteClothe(id:any): Promise<any>{
+    let headers = new HttpHeaders().set('x-access-token', localStorage.getItem("token")||'');
+    return this.httpClient.delete<any>(this.url+'clothes/'+id,{headers}).toPromise();
   }
 
   upload(id:any,files:any): Promise<any>{
@@ -39,5 +50,14 @@ export class ClotheService {
     formData.append('files', files);
     let headers = new HttpHeaders().set('x-access-token', localStorage.getItem("token")||'');
     return this.httpClient.post<any>(this.url+'clothes/upload-images/'+id,formData,{headers}).toPromise();
+  }
+
+  getImages(id:any){
+    let headers = new HttpHeaders().set('x-access-token', localStorage.getItem("token")||'');
+    return this.httpClient.get<any>(this.url+'clothes/get-images/'+id,{headers}).toPromise();
+  }
+
+  getClotheById(id:any){
+    return this.httpClient.get<any>(this.url+'clothes/'+id).toPromise();
   }
 }

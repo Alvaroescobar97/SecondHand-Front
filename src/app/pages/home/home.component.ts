@@ -24,4 +24,5 @@ export class HomeComponent implements OnInit {
     this.clothes = res.clothes;
     console.log(this.clothes);
   }
+
 }

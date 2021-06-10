@@ -14,7 +14,11 @@ export class ClotheNewComponent implements OnInit {
 
   images:any;
 
-  array=new Array();
+  color:any;
+
+  selectedColors = new Array<string>();
+
+  urls=new Array<any>();
 
   constructor(private clotheService: ClotheService, private router: Router) { 
     this.createForm = new FormGroup({
@@ -29,17 +33,13 @@ export class ClotheNewComponent implements OnInit {
   }
 
   async onSubmit(){
-    console.log(this.createForm.value);
+    
     if(this.createForm.valid){
 
       console.log(this.createForm.value);
       let {reference,size,price,description} = this.createForm.value;
-      console.log("Holi");
-      const res = await this.clotheService.createClothe(reference,size,price,description);
-      console.log("Holi2",this.images);
-      console.log(res);
-      console.log(res.clotheSaved._id);
-      if(res.clotheSaved._id){
+      const res = await this.clotheService.createClothe(reference,size,price,description,this.selectedColors);
+      if(res.clotheSaved._id && this.images){
         const upload =  await this.clotheService.upload(res.clotheSaved._id, this.images);
         console.log(upload);
       }
@@ -47,8 +47,28 @@ export class ClotheNewComponent implements OnInit {
       this.router.navigate(['/clothesOnSale']);
     }
   }
-  selectFiles(event:any){
-    this.images = event.target.files;
 
+  async selectFiles(event:any){
+    this.images = event.target.files;
+    console.log(this.images);
+    this.urls.length=0;
+    for (let i = 0; i < this.images.length; i++) {
+      var reader = new FileReader();
+      reader.readAsDataURL(this.images[i]);
+      reader.onload = (events: any) => {
+        this.urls.push(events.target.result);
+
+      };
+    }
+  }
+
+  addColor(){
+    if(this.color !== undefined){
+      this.selectedColors.push(this.color);
+    }
+  }
+
+  deleteColor(i:any){
+    this.selectedColors.splice(i,1);
   }
 }
