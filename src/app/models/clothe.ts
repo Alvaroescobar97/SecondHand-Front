@@ -7,8 +7,9 @@ export class Clothe {
     size:string;
     color:Array<string>;
     images:Array<string>;
+    seller:any;
 
-    constructor(_id='',reference='',description='',price='',size='',color=[],images=[]){
+    constructor(_id='',reference='',description='',price='',size='',color=[],images=[],seller=''){
         this._id=_id;
         this.reference=reference;
         this.description=description;
@@ -16,5 +17,6 @@ export class Clothe {
         this.size=size;
         this.color=color;
         this.images=images;
+        this.seller=seller;
     }
 }

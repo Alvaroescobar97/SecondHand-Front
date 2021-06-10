@@ -1,1 +1,31 @@
-<p>clothe-detail works!</p>
+<div class="container">
+
+  <div class="w-100" *ngIf="clothe.images.length > 0">
+      <gallery style="max-height: 400px;" id="basic-test" fluid [items]="items"></gallery>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center" *ngIf="clothe.images.length===0">
+      <img src="https://infonegocios.info/uploads/companies/logos/90870_529-salahnos-sinimagen%20-%20InfoNegocios%20AR.jpg"
+          class="d-block w-100" alt="..." style="max-height: 250px; max-width: 300px;">
+  </div>
+
+    <h2 class="text-center my-3">{{clothe.reference}} <span style="color: #FFB703;">${{+clothe.price.$numberDecimal*1000}}</span></h2>
+    <div class="d-flex justify-content-center">
+      <p class="text-center mb-3 me-4 fs-4">Size: {{clothe.size}}</p>
+      <p class="text-center mb-3 fs-4">Seller: {{clothe.seller.name}}</p>
+    </div>
+    
+    <p class="text-center mb-3 fs-4">Description: {{clothe.description}}</p>
+    
+    <div class="d-flex align-items-center justify-content-center">
+      
+      <p class="fs-4">Colors:</p>
+      <div  class="rounded-circle ms-3" style="width: 30px; height: 30px; border: 1px solid rgb(141, 141, 141);" *ngFor="let item of clothe.color; let i=index"
+                    [ngStyle]="{'background-color': item}">
+                    
+                </div>
+    </div>
+    
+    
+
+</div>

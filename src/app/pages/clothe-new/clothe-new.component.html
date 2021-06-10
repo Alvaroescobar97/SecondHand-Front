@@ -37,7 +37,7 @@
             <div class="d-flex align-items-center">
                 <a class="btn btn-dark" (click)="addColor()"><i class="fas fa-plus-circle"></i></a>
 
-                <div  class="rounded-circle ms-3" style="width: 30px; height: 30px;" *ngFor="let item of selectedColors; let i=index"
+                <div  class="rounded-circle ms-3" style="width: 30px; height: 30px; border: 1px solid rgb(141, 141, 141);" *ngFor="let item of selectedColors; let i=index"
                     [ngStyle]="{'background-color': item}">
                     <span (click)="deleteColor(i)" class="badge rounded-circle bg-secondary" style="position: relative; top: -15px; left: 15px;"><i class="fas fa-times"></i></span>
                 </div>

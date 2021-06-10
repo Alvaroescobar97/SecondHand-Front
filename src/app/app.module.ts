@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { GalleryModule } from 'ng-gallery';
+import { LightboxModule } from 'ng-gallery/lightbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +19,6 @@ import { ClotheNewComponent } from './pages/clothe-new/clothe-new.component';
 import { ClotheEditComponent } from './pages/clothe-edit/clothe-edit.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { ClotheDetailComponent } from './components/clothe-detail/clothe-detail.component';
-
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { ClotheDetailComponent } from './components/clothe-detail/clothe-detail.
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ColorPickerModule  
+    ColorPickerModule,
+    GalleryModule,
+    LightboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

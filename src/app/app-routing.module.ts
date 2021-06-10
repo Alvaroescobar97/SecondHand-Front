@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ClotheDetailComponent } from './components/clothe-detail/clothe-detail.component';
 import { LoginGuardGuard } from './guards/login-guard.guard';
 import { ChatComponent } from './pages/chat/chat.component';
 import { ClotheEditComponent } from './pages/clothe-edit/clothe-edit.component';
@@ -16,8 +17,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'singup', component: SingupComponent},
   {path: 'clothesOnSale', component: SalesComponent, canActivate:[LoginGuardGuard]},
-  {path: 'clothesOnSale/new', component: ClotheNewComponent},
-  {path: 'clothesOnSale/edit/:id', component: ClotheEditComponent},
+  {path: 'clothesOnSale/new', component: ClotheNewComponent, canActivate:[LoginGuardGuard]},
+  {path: 'clothesOnSale/edit/:id', component: ClotheEditComponent, canActivate:[LoginGuardGuard]},
+  {path: 'clothesOnSale/view/:id', component: ClotheDetailComponent, canActivate:[LoginGuardGuard]},
+  {path: 'home/view/:id', component: ClotheDetailComponent},
   {path: 'chat', component: ChatComponent},
   {path: '**', component: ErrorComponent},
 ];
