@@ -19,6 +19,7 @@ import { ClotheNewComponent } from './pages/clothe-new/clothe-new.component';
 import { ClotheEditComponent } from './pages/clothe-edit/clothe-edit.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { ClotheDetailComponent } from './components/clothe-detail/clothe-detail.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ClotheDetailComponent } from './components/clothe-detail/clothe-detail.
     ClotheNewComponent,
     ClotheEditComponent,
     ChatComponent,
-    ClotheDetailComponent
+    ClotheDetailComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,

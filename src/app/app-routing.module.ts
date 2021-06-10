@@ -8,6 +8,7 @@ import { ClotheNewComponent } from './pages/clothe-new/clothe-new.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 import { SalesComponent } from './pages/sales/sales.component';
 import { SingupComponent } from './pages/singup/singup.component';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'clothesOnSale/edit/:id', component: ClotheEditComponent, canActivate:[LoginGuardGuard]},
   {path: 'clothesOnSale/view/:id', component: ClotheDetailComponent, canActivate:[LoginGuardGuard]},
   {path: 'home/view/:id', component: ClotheDetailComponent},
+  {path: 'reports', component: ReportsComponent, canActivate:[LoginGuardGuard]},
   {path: 'chat', component: ChatComponent},
   {path: '**', component: ErrorComponent},
 ];
